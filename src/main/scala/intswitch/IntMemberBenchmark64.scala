@@ -1,0 +1,258 @@
+
+package intswitchbench
+
+import org.openjdk.jmh.annotations.Benchmark
+import org.openjdk.jmh.annotations.Scope
+import org.openjdk.jmh.annotations.State
+import org.openjdk.jmh.annotations.OperationsPerInvocation
+
+object IntMemberData64 {
+
+  sealed trait WithIntMember {
+    val selector: Int
+  }
+
+  case class NthSelector1(p: Int) extends WithIntMember { val selector = 1 }
+  case class NthSelector2(p: Int) extends WithIntMember { val selector = 2 }
+  case class NthSelector3(p: Int) extends WithIntMember { val selector = 3 }
+  case class NthSelector4(p: Int) extends WithIntMember { val selector = 4 }
+  case class NthSelector5(p: Int) extends WithIntMember { val selector = 5 }
+  case class NthSelector6(p: Int) extends WithIntMember { val selector = 6 }
+  case class NthSelector7(p: Int) extends WithIntMember { val selector = 7 }
+  case class NthSelector8(p: Int) extends WithIntMember { val selector = 8 }
+  case class NthSelector9(p: Int) extends WithIntMember { val selector = 9 }
+  case class NthSelector10(p: Int) extends WithIntMember { val selector = 10 }
+  case class NthSelector11(p: Int) extends WithIntMember { val selector = 11 }
+  case class NthSelector12(p: Int) extends WithIntMember { val selector = 12 }
+  case class NthSelector13(p: Int) extends WithIntMember { val selector = 13 }
+  case class NthSelector14(p: Int) extends WithIntMember { val selector = 14 }
+  case class NthSelector15(p: Int) extends WithIntMember { val selector = 15 }
+  case class NthSelector16(p: Int) extends WithIntMember { val selector = 16 }
+  case class NthSelector17(p: Int) extends WithIntMember { val selector = 17 }
+  case class NthSelector18(p: Int) extends WithIntMember { val selector = 18 }
+  case class NthSelector19(p: Int) extends WithIntMember { val selector = 19 }
+  case class NthSelector20(p: Int) extends WithIntMember { val selector = 20 }
+  case class NthSelector21(p: Int) extends WithIntMember { val selector = 21 }
+  case class NthSelector22(p: Int) extends WithIntMember { val selector = 22 }
+  case class NthSelector23(p: Int) extends WithIntMember { val selector = 23 }
+  case class NthSelector24(p: Int) extends WithIntMember { val selector = 24 }
+  case class NthSelector25(p: Int) extends WithIntMember { val selector = 25 }
+  case class NthSelector26(p: Int) extends WithIntMember { val selector = 26 }
+  case class NthSelector27(p: Int) extends WithIntMember { val selector = 27 }
+  case class NthSelector28(p: Int) extends WithIntMember { val selector = 28 }
+  case class NthSelector29(p: Int) extends WithIntMember { val selector = 29 }
+  case class NthSelector30(p: Int) extends WithIntMember { val selector = 30 }
+  case class NthSelector31(p: Int) extends WithIntMember { val selector = 31 }
+  case class NthSelector32(p: Int) extends WithIntMember { val selector = 32 }
+  case class NthSelector33(p: Int) extends WithIntMember { val selector = 33 }
+  case class NthSelector34(p: Int) extends WithIntMember { val selector = 34 }
+  case class NthSelector35(p: Int) extends WithIntMember { val selector = 35 }
+  case class NthSelector36(p: Int) extends WithIntMember { val selector = 36 }
+  case class NthSelector37(p: Int) extends WithIntMember { val selector = 37 }
+  case class NthSelector38(p: Int) extends WithIntMember { val selector = 38 }
+  case class NthSelector39(p: Int) extends WithIntMember { val selector = 39 }
+  case class NthSelector40(p: Int) extends WithIntMember { val selector = 40 }
+  case class NthSelector41(p: Int) extends WithIntMember { val selector = 41 }
+  case class NthSelector42(p: Int) extends WithIntMember { val selector = 42 }
+  case class NthSelector43(p: Int) extends WithIntMember { val selector = 43 }
+  case class NthSelector44(p: Int) extends WithIntMember { val selector = 44 }
+  case class NthSelector45(p: Int) extends WithIntMember { val selector = 45 }
+  case class NthSelector46(p: Int) extends WithIntMember { val selector = 46 }
+  case class NthSelector47(p: Int) extends WithIntMember { val selector = 47 }
+  case class NthSelector48(p: Int) extends WithIntMember { val selector = 48 }
+  case class NthSelector49(p: Int) extends WithIntMember { val selector = 49 }
+  case class NthSelector50(p: Int) extends WithIntMember { val selector = 50 }
+  case class NthSelector51(p: Int) extends WithIntMember { val selector = 51 }
+  case class NthSelector52(p: Int) extends WithIntMember { val selector = 52 }
+  case class NthSelector53(p: Int) extends WithIntMember { val selector = 53 }
+  case class NthSelector54(p: Int) extends WithIntMember { val selector = 54 }
+  case class NthSelector55(p: Int) extends WithIntMember { val selector = 55 }
+  case class NthSelector56(p: Int) extends WithIntMember { val selector = 56 }
+  case class NthSelector57(p: Int) extends WithIntMember { val selector = 57 }
+  case class NthSelector58(p: Int) extends WithIntMember { val selector = 58 }
+  case class NthSelector59(p: Int) extends WithIntMember { val selector = 59 }
+  case class NthSelector60(p: Int) extends WithIntMember { val selector = 60 }
+  case class NthSelector61(p: Int) extends WithIntMember { val selector = 61 }
+  case class NthSelector62(p: Int) extends WithIntMember { val selector = 62 }
+  case class NthSelector63(p: Int) extends WithIntMember { val selector = 63 }
+  case class NthSelector64(p: Int) extends WithIntMember { val selector = 64 }
+
+  @State(Scope.Benchmark)
+  class Sorted {
+    var s = List.empty[WithIntMember] ++
+      (List.empty[WithIntMember].::(NthSelector1(1)).::(NthSelector2(2)).::(NthSelector3(3)).::(NthSelector4(4)).::(NthSelector5(5)).::(NthSelector6(6)).::(NthSelector7(7)).::(NthSelector8(8)).::(NthSelector9(9)).::(NthSelector10(10)).::(NthSelector11(11)).::(NthSelector12(12)).::(NthSelector13(13)).::(NthSelector14(14)).::(NthSelector15(15)).::(NthSelector16(16)).::(NthSelector17(17)).::(NthSelector18(18)).::(NthSelector19(19)).::(NthSelector20(20)).::(NthSelector21(21)).::(NthSelector22(22)).::(NthSelector23(23)).::(NthSelector24(24)).::(NthSelector25(25)).::(NthSelector26(26)).::(NthSelector27(27)).::(NthSelector28(28)).::(NthSelector29(29)).::(NthSelector30(30)).::(NthSelector31(31)).::(NthSelector32(32)).::(NthSelector33(33)).::(NthSelector34(34)).::(NthSelector35(35)).::(NthSelector36(36)).::(NthSelector37(37)).::(NthSelector38(38)).::(NthSelector39(39)).::(NthSelector40(40)).::(NthSelector41(41)).::(NthSelector42(42)).::(NthSelector43(43)).::(NthSelector44(44)).::(NthSelector45(45)).::(NthSelector46(46)).::(NthSelector47(47)).::(NthSelector48(48)).::(NthSelector49(49)).::(NthSelector50(50)).::(NthSelector51(51)).::(NthSelector52(52)).::(NthSelector53(53)).::(NthSelector54(54)).::(NthSelector55(55)).::(NthSelector56(56)).::(NthSelector57(57)).::(NthSelector58(58)).::(NthSelector59(59)).::(NthSelector60(60)).::(NthSelector61(61)).::(NthSelector62(62)).::(NthSelector63(63)).::(NthSelector64(64)))
+  }
+
+  @State(Scope.Benchmark)
+  class Shuffled {
+    var sorted = List.empty[WithIntMember] ++
+      (List.empty[WithIntMember].::(NthSelector1(1)).::(NthSelector2(2)).::(NthSelector3(3)).::(NthSelector4(4)).::(NthSelector5(5)).::(NthSelector6(6)).::(NthSelector7(7)).::(NthSelector8(8)).::(NthSelector9(9)).::(NthSelector10(10)).::(NthSelector11(11)).::(NthSelector12(12)).::(NthSelector13(13)).::(NthSelector14(14)).::(NthSelector15(15)).::(NthSelector16(16)).::(NthSelector17(17)).::(NthSelector18(18)).::(NthSelector19(19)).::(NthSelector20(20)).::(NthSelector21(21)).::(NthSelector22(22)).::(NthSelector23(23)).::(NthSelector24(24)).::(NthSelector25(25)).::(NthSelector26(26)).::(NthSelector27(27)).::(NthSelector28(28)).::(NthSelector29(29)).::(NthSelector30(30)).::(NthSelector31(31)).::(NthSelector32(32)).::(NthSelector33(33)).::(NthSelector34(34)).::(NthSelector35(35)).::(NthSelector36(36)).::(NthSelector37(37)).::(NthSelector38(38)).::(NthSelector39(39)).::(NthSelector40(40)).::(NthSelector41(41)).::(NthSelector42(42)).::(NthSelector43(43)).::(NthSelector44(44)).::(NthSelector45(45)).::(NthSelector46(46)).::(NthSelector47(47)).::(NthSelector48(48)).::(NthSelector49(49)).::(NthSelector50(50)).::(NthSelector51(51)).::(NthSelector52(52)).::(NthSelector53(53)).::(NthSelector54(54)).::(NthSelector55(55)).::(NthSelector56(56)).::(NthSelector57(57)).::(NthSelector58(58)).::(NthSelector59(59)).::(NthSelector60(60)).::(NthSelector61(61)).::(NthSelector62(62)).::(NthSelector63(63)).::(NthSelector64(64)))
+    var s = new scala.util.Random(64).shuffle(sorted)
+  }
+
+}
+
+class IntMemberBenchmark64 {
+  import IntMemberData64._
+  import scala.annotation._
+  import org.openjdk.jmh.infra.Blackhole
+
+  @Benchmark
+  @OperationsPerInvocation(64)
+  def benchSelectorSorted(bh: Blackhole, state: Sorted) = {
+
+    def selectSelf(caze: WithIntMember) = {
+      val sel = caze.selector
+      (sel: @switch) match {
+
+        case 1 => bh.consume(caze.asInstanceOf[NthSelector1].p)
+        case 2 => bh.consume(caze.asInstanceOf[NthSelector2].p)
+        case 3 => bh.consume(caze.asInstanceOf[NthSelector3].p)
+        case 4 => bh.consume(caze.asInstanceOf[NthSelector4].p)
+        case 5 => bh.consume(caze.asInstanceOf[NthSelector5].p)
+        case 6 => bh.consume(caze.asInstanceOf[NthSelector6].p)
+        case 7 => bh.consume(caze.asInstanceOf[NthSelector7].p)
+        case 8 => bh.consume(caze.asInstanceOf[NthSelector8].p)
+        case 9 => bh.consume(caze.asInstanceOf[NthSelector9].p)
+        case 10 => bh.consume(caze.asInstanceOf[NthSelector10].p)
+        case 11 => bh.consume(caze.asInstanceOf[NthSelector11].p)
+        case 12 => bh.consume(caze.asInstanceOf[NthSelector12].p)
+        case 13 => bh.consume(caze.asInstanceOf[NthSelector13].p)
+        case 14 => bh.consume(caze.asInstanceOf[NthSelector14].p)
+        case 15 => bh.consume(caze.asInstanceOf[NthSelector15].p)
+        case 16 => bh.consume(caze.asInstanceOf[NthSelector16].p)
+        case 17 => bh.consume(caze.asInstanceOf[NthSelector17].p)
+        case 18 => bh.consume(caze.asInstanceOf[NthSelector18].p)
+        case 19 => bh.consume(caze.asInstanceOf[NthSelector19].p)
+        case 20 => bh.consume(caze.asInstanceOf[NthSelector20].p)
+        case 21 => bh.consume(caze.asInstanceOf[NthSelector21].p)
+        case 22 => bh.consume(caze.asInstanceOf[NthSelector22].p)
+        case 23 => bh.consume(caze.asInstanceOf[NthSelector23].p)
+        case 24 => bh.consume(caze.asInstanceOf[NthSelector24].p)
+        case 25 => bh.consume(caze.asInstanceOf[NthSelector25].p)
+        case 26 => bh.consume(caze.asInstanceOf[NthSelector26].p)
+        case 27 => bh.consume(caze.asInstanceOf[NthSelector27].p)
+        case 28 => bh.consume(caze.asInstanceOf[NthSelector28].p)
+        case 29 => bh.consume(caze.asInstanceOf[NthSelector29].p)
+        case 30 => bh.consume(caze.asInstanceOf[NthSelector30].p)
+        case 31 => bh.consume(caze.asInstanceOf[NthSelector31].p)
+        case 32 => bh.consume(caze.asInstanceOf[NthSelector32].p)
+        case 33 => bh.consume(caze.asInstanceOf[NthSelector33].p)
+        case 34 => bh.consume(caze.asInstanceOf[NthSelector34].p)
+        case 35 => bh.consume(caze.asInstanceOf[NthSelector35].p)
+        case 36 => bh.consume(caze.asInstanceOf[NthSelector36].p)
+        case 37 => bh.consume(caze.asInstanceOf[NthSelector37].p)
+        case 38 => bh.consume(caze.asInstanceOf[NthSelector38].p)
+        case 39 => bh.consume(caze.asInstanceOf[NthSelector39].p)
+        case 40 => bh.consume(caze.asInstanceOf[NthSelector40].p)
+        case 41 => bh.consume(caze.asInstanceOf[NthSelector41].p)
+        case 42 => bh.consume(caze.asInstanceOf[NthSelector42].p)
+        case 43 => bh.consume(caze.asInstanceOf[NthSelector43].p)
+        case 44 => bh.consume(caze.asInstanceOf[NthSelector44].p)
+        case 45 => bh.consume(caze.asInstanceOf[NthSelector45].p)
+        case 46 => bh.consume(caze.asInstanceOf[NthSelector46].p)
+        case 47 => bh.consume(caze.asInstanceOf[NthSelector47].p)
+        case 48 => bh.consume(caze.asInstanceOf[NthSelector48].p)
+        case 49 => bh.consume(caze.asInstanceOf[NthSelector49].p)
+        case 50 => bh.consume(caze.asInstanceOf[NthSelector50].p)
+        case 51 => bh.consume(caze.asInstanceOf[NthSelector51].p)
+        case 52 => bh.consume(caze.asInstanceOf[NthSelector52].p)
+        case 53 => bh.consume(caze.asInstanceOf[NthSelector53].p)
+        case 54 => bh.consume(caze.asInstanceOf[NthSelector54].p)
+        case 55 => bh.consume(caze.asInstanceOf[NthSelector55].p)
+        case 56 => bh.consume(caze.asInstanceOf[NthSelector56].p)
+        case 57 => bh.consume(caze.asInstanceOf[NthSelector57].p)
+        case 58 => bh.consume(caze.asInstanceOf[NthSelector58].p)
+        case 59 => bh.consume(caze.asInstanceOf[NthSelector59].p)
+        case 60 => bh.consume(caze.asInstanceOf[NthSelector60].p)
+        case 61 => bh.consume(caze.asInstanceOf[NthSelector61].p)
+        case 62 => bh.consume(caze.asInstanceOf[NthSelector62].p)
+        case 63 => bh.consume(caze.asInstanceOf[NthSelector63].p)
+        case 64 => bh.consume(caze.asInstanceOf[NthSelector64].p)
+      }
+    }
+
+    state.s.foreach(selectSelf)
+
+  }
+
+  @Benchmark
+  @OperationsPerInvocation(64)
+  def benchSelectorUnsorted(bh: Blackhole, state: Shuffled) = {
+
+    def selectSelf(caze: WithIntMember) = {
+      val sel = caze.selector
+      (sel: @switch) match {
+
+        case 1 => bh.consume(caze.asInstanceOf[NthSelector1].p)
+        case 2 => bh.consume(caze.asInstanceOf[NthSelector2].p)
+        case 3 => bh.consume(caze.asInstanceOf[NthSelector3].p)
+        case 4 => bh.consume(caze.asInstanceOf[NthSelector4].p)
+        case 5 => bh.consume(caze.asInstanceOf[NthSelector5].p)
+        case 6 => bh.consume(caze.asInstanceOf[NthSelector6].p)
+        case 7 => bh.consume(caze.asInstanceOf[NthSelector7].p)
+        case 8 => bh.consume(caze.asInstanceOf[NthSelector8].p)
+        case 9 => bh.consume(caze.asInstanceOf[NthSelector9].p)
+        case 10 => bh.consume(caze.asInstanceOf[NthSelector10].p)
+        case 11 => bh.consume(caze.asInstanceOf[NthSelector11].p)
+        case 12 => bh.consume(caze.asInstanceOf[NthSelector12].p)
+        case 13 => bh.consume(caze.asInstanceOf[NthSelector13].p)
+        case 14 => bh.consume(caze.asInstanceOf[NthSelector14].p)
+        case 15 => bh.consume(caze.asInstanceOf[NthSelector15].p)
+        case 16 => bh.consume(caze.asInstanceOf[NthSelector16].p)
+        case 17 => bh.consume(caze.asInstanceOf[NthSelector17].p)
+        case 18 => bh.consume(caze.asInstanceOf[NthSelector18].p)
+        case 19 => bh.consume(caze.asInstanceOf[NthSelector19].p)
+        case 20 => bh.consume(caze.asInstanceOf[NthSelector20].p)
+        case 21 => bh.consume(caze.asInstanceOf[NthSelector21].p)
+        case 22 => bh.consume(caze.asInstanceOf[NthSelector22].p)
+        case 23 => bh.consume(caze.asInstanceOf[NthSelector23].p)
+        case 24 => bh.consume(caze.asInstanceOf[NthSelector24].p)
+        case 25 => bh.consume(caze.asInstanceOf[NthSelector25].p)
+        case 26 => bh.consume(caze.asInstanceOf[NthSelector26].p)
+        case 27 => bh.consume(caze.asInstanceOf[NthSelector27].p)
+        case 28 => bh.consume(caze.asInstanceOf[NthSelector28].p)
+        case 29 => bh.consume(caze.asInstanceOf[NthSelector29].p)
+        case 30 => bh.consume(caze.asInstanceOf[NthSelector30].p)
+        case 31 => bh.consume(caze.asInstanceOf[NthSelector31].p)
+        case 32 => bh.consume(caze.asInstanceOf[NthSelector32].p)
+        case 33 => bh.consume(caze.asInstanceOf[NthSelector33].p)
+        case 34 => bh.consume(caze.asInstanceOf[NthSelector34].p)
+        case 35 => bh.consume(caze.asInstanceOf[NthSelector35].p)
+        case 36 => bh.consume(caze.asInstanceOf[NthSelector36].p)
+        case 37 => bh.consume(caze.asInstanceOf[NthSelector37].p)
+        case 38 => bh.consume(caze.asInstanceOf[NthSelector38].p)
+        case 39 => bh.consume(caze.asInstanceOf[NthSelector39].p)
+        case 40 => bh.consume(caze.asInstanceOf[NthSelector40].p)
+        case 41 => bh.consume(caze.asInstanceOf[NthSelector41].p)
+        case 42 => bh.consume(caze.asInstanceOf[NthSelector42].p)
+        case 43 => bh.consume(caze.asInstanceOf[NthSelector43].p)
+        case 44 => bh.consume(caze.asInstanceOf[NthSelector44].p)
+        case 45 => bh.consume(caze.asInstanceOf[NthSelector45].p)
+        case 46 => bh.consume(caze.asInstanceOf[NthSelector46].p)
+        case 47 => bh.consume(caze.asInstanceOf[NthSelector47].p)
+        case 48 => bh.consume(caze.asInstanceOf[NthSelector48].p)
+        case 49 => bh.consume(caze.asInstanceOf[NthSelector49].p)
+        case 50 => bh.consume(caze.asInstanceOf[NthSelector50].p)
+        case 51 => bh.consume(caze.asInstanceOf[NthSelector51].p)
+        case 52 => bh.consume(caze.asInstanceOf[NthSelector52].p)
+        case 53 => bh.consume(caze.asInstanceOf[NthSelector53].p)
+        case 54 => bh.consume(caze.asInstanceOf[NthSelector54].p)
+        case 55 => bh.consume(caze.asInstanceOf[NthSelector55].p)
+        case 56 => bh.consume(caze.asInstanceOf[NthSelector56].p)
+        case 57 => bh.consume(caze.asInstanceOf[NthSelector57].p)
+        case 58 => bh.consume(caze.asInstanceOf[NthSelector58].p)
+        case 59 => bh.consume(caze.asInstanceOf[NthSelector59].p)
+        case 60 => bh.consume(caze.asInstanceOf[NthSelector60].p)
+        case 61 => bh.consume(caze.asInstanceOf[NthSelector61].p)
+        case 62 => bh.consume(caze.asInstanceOf[NthSelector62].p)
+        case 63 => bh.consume(caze.asInstanceOf[NthSelector63].p)
+        case 64 => bh.consume(caze.asInstanceOf[NthSelector64].p)
+      }
+    }
+
+    state.s.foreach(selectSelf)
+
+  }
+
+}
