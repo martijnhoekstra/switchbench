@@ -7,31 +7,25 @@ import org.openjdk.jmh.annotations.State
 import org.openjdk.jmh.annotations.OperationsPerInvocation
 
 object PlainData4 {
+  import PlainData._
 
-  sealed trait Plain
-
-  case class NthSelector1(p: Int) extends Plain
-  case class NthSelector2(p: Int) extends Plain
-  case class NthSelector3(p: Int) extends Plain
-  case class NthSelector4(p: Int) extends Plain
+  val mylist = sortedlist.take(4)
 
   @State(Scope.Benchmark)
   class Sorted {
-    var s = List.empty[Plain] ++
-      (List.empty[Plain].::(NthSelector1(1)).::(NthSelector2(2)).::(NthSelector3(3)).::(NthSelector4(4)))
+    var s = mylist
   }
 
   @State(Scope.Benchmark)
   class Shuffled {
-    var sorted = List.empty[Plain] ++
-      (List.empty[Plain].::(NthSelector1(1)).::(NthSelector2(2)).::(NthSelector3(3)).::(NthSelector4(4)))
-    var s = new scala.util.Random(4).shuffle(sorted)
+    var s = new scala.util.Random(4).shuffle(mylist)
   }
 
 }
 
 class PlainBenchmark4 {
   import PlainData4._
+
   import scala.annotation._
   import org.openjdk.jmh.infra.Blackhole
 
@@ -42,10 +36,11 @@ class PlainBenchmark4 {
     def selectSelf(caze: Plain) = {
       caze match {
 
-        case NthSelector1(p) => bh.consume(p)
-        case NthSelector2(p) => bh.consume(p)
-        case NthSelector3(p) => bh.consume(p)
-        case NthSelector4(p) => bh.consume(p)
+        case NthSelectorPlain1(p) => bh.consume(p)
+        case NthSelectorPlain2(p) => bh.consume(p)
+        case NthSelectorPlain3(p) => bh.consume(p)
+        case NthSelectorPlain4(p) => bh.consume(p)
+        case _ => ???
       }
     }
 
@@ -57,13 +52,14 @@ class PlainBenchmark4 {
   @OperationsPerInvocation(4)
   def benchSelectorUnsorted(bh: Blackhole, state: Shuffled) = {
 
-    def selectSelf(caze: Plain) = {
+    def selectSelf(caze: Plain): Unit = {
       caze match {
 
-        case NthSelector1(p) => bh.consume(p)
-        case NthSelector2(p) => bh.consume(p)
-        case NthSelector3(p) => bh.consume(p)
-        case NthSelector4(p) => bh.consume(p)
+        case NthSelectorPlain1(p) => bh.consume(p)
+        case NthSelectorPlain2(p) => bh.consume(p)
+        case NthSelectorPlain3(p) => bh.consume(p)
+        case NthSelectorPlain4(p) => bh.consume(p)
+        case _ => ???
       }
     }
 

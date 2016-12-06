@@ -2,7 +2,7 @@ name := """matchbenchmarks"""
 
 version := "1.0-SNAPSHOT"
 
-scalaVersion := "2.12.0"
+scalaVersion := "2.12.1"
 
 libraryDependencies ++= Seq(
   // Add your own project dependencies in the form:

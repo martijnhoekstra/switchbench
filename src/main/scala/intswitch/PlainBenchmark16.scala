@@ -7,43 +7,25 @@ import org.openjdk.jmh.annotations.State
 import org.openjdk.jmh.annotations.OperationsPerInvocation
 
 object PlainData16 {
+  import PlainData._
 
-  sealed trait Plain
-
-  case class NthSelector1(p: Int) extends Plain
-  case class NthSelector2(p: Int) extends Plain
-  case class NthSelector3(p: Int) extends Plain
-  case class NthSelector4(p: Int) extends Plain
-  case class NthSelector5(p: Int) extends Plain
-  case class NthSelector6(p: Int) extends Plain
-  case class NthSelector7(p: Int) extends Plain
-  case class NthSelector8(p: Int) extends Plain
-  case class NthSelector9(p: Int) extends Plain
-  case class NthSelector10(p: Int) extends Plain
-  case class NthSelector11(p: Int) extends Plain
-  case class NthSelector12(p: Int) extends Plain
-  case class NthSelector13(p: Int) extends Plain
-  case class NthSelector14(p: Int) extends Plain
-  case class NthSelector15(p: Int) extends Plain
-  case class NthSelector16(p: Int) extends Plain
+  val mylist = sortedlist.take(16)
 
   @State(Scope.Benchmark)
   class Sorted {
-    var s = List.empty[Plain] ++
-      (List.empty[Plain].::(NthSelector1(1)).::(NthSelector2(2)).::(NthSelector3(3)).::(NthSelector4(4)).::(NthSelector5(5)).::(NthSelector6(6)).::(NthSelector7(7)).::(NthSelector8(8)).::(NthSelector9(9)).::(NthSelector10(10)).::(NthSelector11(11)).::(NthSelector12(12)).::(NthSelector13(13)).::(NthSelector14(14)).::(NthSelector15(15)).::(NthSelector16(16)))
+    var s = mylist
   }
 
   @State(Scope.Benchmark)
   class Shuffled {
-    var sorted = List.empty[Plain] ++
-      (List.empty[Plain].::(NthSelector1(1)).::(NthSelector2(2)).::(NthSelector3(3)).::(NthSelector4(4)).::(NthSelector5(5)).::(NthSelector6(6)).::(NthSelector7(7)).::(NthSelector8(8)).::(NthSelector9(9)).::(NthSelector10(10)).::(NthSelector11(11)).::(NthSelector12(12)).::(NthSelector13(13)).::(NthSelector14(14)).::(NthSelector15(15)).::(NthSelector16(16)))
-    var s = new scala.util.Random(16).shuffle(sorted)
+    var s = new scala.util.Random(16).shuffle(mylist)
   }
 
 }
 
 class PlainBenchmark16 {
   import PlainData16._
+
   import scala.annotation._
   import org.openjdk.jmh.infra.Blackhole
 
@@ -54,22 +36,23 @@ class PlainBenchmark16 {
     def selectSelf(caze: Plain) = {
       caze match {
 
-        case NthSelector1(p) => bh.consume(p)
-        case NthSelector2(p) => bh.consume(p)
-        case NthSelector3(p) => bh.consume(p)
-        case NthSelector4(p) => bh.consume(p)
-        case NthSelector5(p) => bh.consume(p)
-        case NthSelector6(p) => bh.consume(p)
-        case NthSelector7(p) => bh.consume(p)
-        case NthSelector8(p) => bh.consume(p)
-        case NthSelector9(p) => bh.consume(p)
-        case NthSelector10(p) => bh.consume(p)
-        case NthSelector11(p) => bh.consume(p)
-        case NthSelector12(p) => bh.consume(p)
-        case NthSelector13(p) => bh.consume(p)
-        case NthSelector14(p) => bh.consume(p)
-        case NthSelector15(p) => bh.consume(p)
-        case NthSelector16(p) => bh.consume(p)
+        case NthSelectorPlain1(p) => bh.consume(p)
+        case NthSelectorPlain2(p) => bh.consume(p)
+        case NthSelectorPlain3(p) => bh.consume(p)
+        case NthSelectorPlain4(p) => bh.consume(p)
+        case NthSelectorPlain5(p) => bh.consume(p)
+        case NthSelectorPlain6(p) => bh.consume(p)
+        case NthSelectorPlain7(p) => bh.consume(p)
+        case NthSelectorPlain8(p) => bh.consume(p)
+        case NthSelectorPlain9(p) => bh.consume(p)
+        case NthSelectorPlain10(p) => bh.consume(p)
+        case NthSelectorPlain11(p) => bh.consume(p)
+        case NthSelectorPlain12(p) => bh.consume(p)
+        case NthSelectorPlain13(p) => bh.consume(p)
+        case NthSelectorPlain14(p) => bh.consume(p)
+        case NthSelectorPlain15(p) => bh.consume(p)
+        case NthSelectorPlain16(p) => bh.consume(p)
+        case _ => ???
       }
     }
 
@@ -81,25 +64,26 @@ class PlainBenchmark16 {
   @OperationsPerInvocation(16)
   def benchSelectorUnsorted(bh: Blackhole, state: Shuffled) = {
 
-    def selectSelf(caze: Plain) = {
+    def selectSelf(caze: Plain): Unit = {
       caze match {
 
-        case NthSelector1(p) => bh.consume(p)
-        case NthSelector2(p) => bh.consume(p)
-        case NthSelector3(p) => bh.consume(p)
-        case NthSelector4(p) => bh.consume(p)
-        case NthSelector5(p) => bh.consume(p)
-        case NthSelector6(p) => bh.consume(p)
-        case NthSelector7(p) => bh.consume(p)
-        case NthSelector8(p) => bh.consume(p)
-        case NthSelector9(p) => bh.consume(p)
-        case NthSelector10(p) => bh.consume(p)
-        case NthSelector11(p) => bh.consume(p)
-        case NthSelector12(p) => bh.consume(p)
-        case NthSelector13(p) => bh.consume(p)
-        case NthSelector14(p) => bh.consume(p)
-        case NthSelector15(p) => bh.consume(p)
-        case NthSelector16(p) => bh.consume(p)
+        case NthSelectorPlain1(p) => bh.consume(p)
+        case NthSelectorPlain2(p) => bh.consume(p)
+        case NthSelectorPlain3(p) => bh.consume(p)
+        case NthSelectorPlain4(p) => bh.consume(p)
+        case NthSelectorPlain5(p) => bh.consume(p)
+        case NthSelectorPlain6(p) => bh.consume(p)
+        case NthSelectorPlain7(p) => bh.consume(p)
+        case NthSelectorPlain8(p) => bh.consume(p)
+        case NthSelectorPlain9(p) => bh.consume(p)
+        case NthSelectorPlain10(p) => bh.consume(p)
+        case NthSelectorPlain11(p) => bh.consume(p)
+        case NthSelectorPlain12(p) => bh.consume(p)
+        case NthSelectorPlain13(p) => bh.consume(p)
+        case NthSelectorPlain14(p) => bh.consume(p)
+        case NthSelectorPlain15(p) => bh.consume(p)
+        case NthSelectorPlain16(p) => bh.consume(p)
+        case _ => ???
       }
     }
 

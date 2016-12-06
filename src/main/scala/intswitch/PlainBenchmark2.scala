@@ -7,29 +7,25 @@ import org.openjdk.jmh.annotations.State
 import org.openjdk.jmh.annotations.OperationsPerInvocation
 
 object PlainData2 {
+  import PlainData._
 
-  sealed trait Plain
-
-  case class NthSelector1(p: Int) extends Plain
-  case class NthSelector2(p: Int) extends Plain
+  val mylist = sortedlist.take(2)
 
   @State(Scope.Benchmark)
   class Sorted {
-    var s = List.empty[Plain] ++
-      (List.empty[Plain].::(NthSelector1(1)).::(NthSelector2(2)))
+    var s = mylist
   }
 
   @State(Scope.Benchmark)
   class Shuffled {
-    var sorted = List.empty[Plain] ++
-      (List.empty[Plain].::(NthSelector1(1)).::(NthSelector2(2)))
-    var s = new scala.util.Random(2).shuffle(sorted)
+    var s = new scala.util.Random(2).shuffle(mylist)
   }
 
 }
 
 class PlainBenchmark2 {
   import PlainData2._
+
   import scala.annotation._
   import org.openjdk.jmh.infra.Blackhole
 
@@ -40,8 +36,9 @@ class PlainBenchmark2 {
     def selectSelf(caze: Plain) = {
       caze match {
 
-        case NthSelector1(p) => bh.consume(p)
-        case NthSelector2(p) => bh.consume(p)
+        case NthSelectorPlain1(p) => bh.consume(p)
+        case NthSelectorPlain2(p) => bh.consume(p)
+        case _ => ???
       }
     }
 
@@ -53,11 +50,12 @@ class PlainBenchmark2 {
   @OperationsPerInvocation(2)
   def benchSelectorUnsorted(bh: Blackhole, state: Shuffled) = {
 
-    def selectSelf(caze: Plain) = {
+    def selectSelf(caze: Plain): Unit = {
       caze match {
 
-        case NthSelector1(p) => bh.consume(p)
-        case NthSelector2(p) => bh.consume(p)
+        case NthSelectorPlain1(p) => bh.consume(p)
+        case NthSelectorPlain2(p) => bh.consume(p)
+        case _ => ???
       }
     }
 

@@ -7,67 +7,25 @@ import org.openjdk.jmh.annotations.State
 import org.openjdk.jmh.annotations.OperationsPerInvocation
 
 object PlainData40 {
+  import PlainData._
 
-  sealed trait Plain
-
-  case class NthSelector1(p: Int) extends Plain
-  case class NthSelector2(p: Int) extends Plain
-  case class NthSelector3(p: Int) extends Plain
-  case class NthSelector4(p: Int) extends Plain
-  case class NthSelector5(p: Int) extends Plain
-  case class NthSelector6(p: Int) extends Plain
-  case class NthSelector7(p: Int) extends Plain
-  case class NthSelector8(p: Int) extends Plain
-  case class NthSelector9(p: Int) extends Plain
-  case class NthSelector10(p: Int) extends Plain
-  case class NthSelector11(p: Int) extends Plain
-  case class NthSelector12(p: Int) extends Plain
-  case class NthSelector13(p: Int) extends Plain
-  case class NthSelector14(p: Int) extends Plain
-  case class NthSelector15(p: Int) extends Plain
-  case class NthSelector16(p: Int) extends Plain
-  case class NthSelector17(p: Int) extends Plain
-  case class NthSelector18(p: Int) extends Plain
-  case class NthSelector19(p: Int) extends Plain
-  case class NthSelector20(p: Int) extends Plain
-  case class NthSelector21(p: Int) extends Plain
-  case class NthSelector22(p: Int) extends Plain
-  case class NthSelector23(p: Int) extends Plain
-  case class NthSelector24(p: Int) extends Plain
-  case class NthSelector25(p: Int) extends Plain
-  case class NthSelector26(p: Int) extends Plain
-  case class NthSelector27(p: Int) extends Plain
-  case class NthSelector28(p: Int) extends Plain
-  case class NthSelector29(p: Int) extends Plain
-  case class NthSelector30(p: Int) extends Plain
-  case class NthSelector31(p: Int) extends Plain
-  case class NthSelector32(p: Int) extends Plain
-  case class NthSelector33(p: Int) extends Plain
-  case class NthSelector34(p: Int) extends Plain
-  case class NthSelector35(p: Int) extends Plain
-  case class NthSelector36(p: Int) extends Plain
-  case class NthSelector37(p: Int) extends Plain
-  case class NthSelector38(p: Int) extends Plain
-  case class NthSelector39(p: Int) extends Plain
-  case class NthSelector40(p: Int) extends Plain
+  val mylist = sortedlist.take(40)
 
   @State(Scope.Benchmark)
   class Sorted {
-    var s = List.empty[Plain] ++
-      (List.empty[Plain].::(NthSelector1(1)).::(NthSelector2(2)).::(NthSelector3(3)).::(NthSelector4(4)).::(NthSelector5(5)).::(NthSelector6(6)).::(NthSelector7(7)).::(NthSelector8(8)).::(NthSelector9(9)).::(NthSelector10(10)).::(NthSelector11(11)).::(NthSelector12(12)).::(NthSelector13(13)).::(NthSelector14(14)).::(NthSelector15(15)).::(NthSelector16(16)).::(NthSelector17(17)).::(NthSelector18(18)).::(NthSelector19(19)).::(NthSelector20(20)).::(NthSelector21(21)).::(NthSelector22(22)).::(NthSelector23(23)).::(NthSelector24(24)).::(NthSelector25(25)).::(NthSelector26(26)).::(NthSelector27(27)).::(NthSelector28(28)).::(NthSelector29(29)).::(NthSelector30(30)).::(NthSelector31(31)).::(NthSelector32(32)).::(NthSelector33(33)).::(NthSelector34(34)).::(NthSelector35(35)).::(NthSelector36(36)).::(NthSelector37(37)).::(NthSelector38(38)).::(NthSelector39(39)).::(NthSelector40(40)))
+    var s = mylist
   }
 
   @State(Scope.Benchmark)
   class Shuffled {
-    var sorted = List.empty[Plain] ++
-      (List.empty[Plain].::(NthSelector1(1)).::(NthSelector2(2)).::(NthSelector3(3)).::(NthSelector4(4)).::(NthSelector5(5)).::(NthSelector6(6)).::(NthSelector7(7)).::(NthSelector8(8)).::(NthSelector9(9)).::(NthSelector10(10)).::(NthSelector11(11)).::(NthSelector12(12)).::(NthSelector13(13)).::(NthSelector14(14)).::(NthSelector15(15)).::(NthSelector16(16)).::(NthSelector17(17)).::(NthSelector18(18)).::(NthSelector19(19)).::(NthSelector20(20)).::(NthSelector21(21)).::(NthSelector22(22)).::(NthSelector23(23)).::(NthSelector24(24)).::(NthSelector25(25)).::(NthSelector26(26)).::(NthSelector27(27)).::(NthSelector28(28)).::(NthSelector29(29)).::(NthSelector30(30)).::(NthSelector31(31)).::(NthSelector32(32)).::(NthSelector33(33)).::(NthSelector34(34)).::(NthSelector35(35)).::(NthSelector36(36)).::(NthSelector37(37)).::(NthSelector38(38)).::(NthSelector39(39)).::(NthSelector40(40)))
-    var s = new scala.util.Random(40).shuffle(sorted)
+    var s = new scala.util.Random(40).shuffle(mylist)
   }
 
 }
 
 class PlainBenchmark40 {
   import PlainData40._
+
   import scala.annotation._
   import org.openjdk.jmh.infra.Blackhole
 
@@ -78,46 +36,47 @@ class PlainBenchmark40 {
     def selectSelf(caze: Plain) = {
       caze match {
 
-        case NthSelector1(p) => bh.consume(p)
-        case NthSelector2(p) => bh.consume(p)
-        case NthSelector3(p) => bh.consume(p)
-        case NthSelector4(p) => bh.consume(p)
-        case NthSelector5(p) => bh.consume(p)
-        case NthSelector6(p) => bh.consume(p)
-        case NthSelector7(p) => bh.consume(p)
-        case NthSelector8(p) => bh.consume(p)
-        case NthSelector9(p) => bh.consume(p)
-        case NthSelector10(p) => bh.consume(p)
-        case NthSelector11(p) => bh.consume(p)
-        case NthSelector12(p) => bh.consume(p)
-        case NthSelector13(p) => bh.consume(p)
-        case NthSelector14(p) => bh.consume(p)
-        case NthSelector15(p) => bh.consume(p)
-        case NthSelector16(p) => bh.consume(p)
-        case NthSelector17(p) => bh.consume(p)
-        case NthSelector18(p) => bh.consume(p)
-        case NthSelector19(p) => bh.consume(p)
-        case NthSelector20(p) => bh.consume(p)
-        case NthSelector21(p) => bh.consume(p)
-        case NthSelector22(p) => bh.consume(p)
-        case NthSelector23(p) => bh.consume(p)
-        case NthSelector24(p) => bh.consume(p)
-        case NthSelector25(p) => bh.consume(p)
-        case NthSelector26(p) => bh.consume(p)
-        case NthSelector27(p) => bh.consume(p)
-        case NthSelector28(p) => bh.consume(p)
-        case NthSelector29(p) => bh.consume(p)
-        case NthSelector30(p) => bh.consume(p)
-        case NthSelector31(p) => bh.consume(p)
-        case NthSelector32(p) => bh.consume(p)
-        case NthSelector33(p) => bh.consume(p)
-        case NthSelector34(p) => bh.consume(p)
-        case NthSelector35(p) => bh.consume(p)
-        case NthSelector36(p) => bh.consume(p)
-        case NthSelector37(p) => bh.consume(p)
-        case NthSelector38(p) => bh.consume(p)
-        case NthSelector39(p) => bh.consume(p)
-        case NthSelector40(p) => bh.consume(p)
+        case NthSelectorPlain1(p) => bh.consume(p)
+        case NthSelectorPlain2(p) => bh.consume(p)
+        case NthSelectorPlain3(p) => bh.consume(p)
+        case NthSelectorPlain4(p) => bh.consume(p)
+        case NthSelectorPlain5(p) => bh.consume(p)
+        case NthSelectorPlain6(p) => bh.consume(p)
+        case NthSelectorPlain7(p) => bh.consume(p)
+        case NthSelectorPlain8(p) => bh.consume(p)
+        case NthSelectorPlain9(p) => bh.consume(p)
+        case NthSelectorPlain10(p) => bh.consume(p)
+        case NthSelectorPlain11(p) => bh.consume(p)
+        case NthSelectorPlain12(p) => bh.consume(p)
+        case NthSelectorPlain13(p) => bh.consume(p)
+        case NthSelectorPlain14(p) => bh.consume(p)
+        case NthSelectorPlain15(p) => bh.consume(p)
+        case NthSelectorPlain16(p) => bh.consume(p)
+        case NthSelectorPlain17(p) => bh.consume(p)
+        case NthSelectorPlain18(p) => bh.consume(p)
+        case NthSelectorPlain19(p) => bh.consume(p)
+        case NthSelectorPlain20(p) => bh.consume(p)
+        case NthSelectorPlain21(p) => bh.consume(p)
+        case NthSelectorPlain22(p) => bh.consume(p)
+        case NthSelectorPlain23(p) => bh.consume(p)
+        case NthSelectorPlain24(p) => bh.consume(p)
+        case NthSelectorPlain25(p) => bh.consume(p)
+        case NthSelectorPlain26(p) => bh.consume(p)
+        case NthSelectorPlain27(p) => bh.consume(p)
+        case NthSelectorPlain28(p) => bh.consume(p)
+        case NthSelectorPlain29(p) => bh.consume(p)
+        case NthSelectorPlain30(p) => bh.consume(p)
+        case NthSelectorPlain31(p) => bh.consume(p)
+        case NthSelectorPlain32(p) => bh.consume(p)
+        case NthSelectorPlain33(p) => bh.consume(p)
+        case NthSelectorPlain34(p) => bh.consume(p)
+        case NthSelectorPlain35(p) => bh.consume(p)
+        case NthSelectorPlain36(p) => bh.consume(p)
+        case NthSelectorPlain37(p) => bh.consume(p)
+        case NthSelectorPlain38(p) => bh.consume(p)
+        case NthSelectorPlain39(p) => bh.consume(p)
+        case NthSelectorPlain40(p) => bh.consume(p)
+        case _ => ???
       }
     }
 
@@ -129,49 +88,50 @@ class PlainBenchmark40 {
   @OperationsPerInvocation(40)
   def benchSelectorUnsorted(bh: Blackhole, state: Shuffled) = {
 
-    def selectSelf(caze: Plain) = {
+    def selectSelf(caze: Plain): Unit = {
       caze match {
 
-        case NthSelector1(p) => bh.consume(p)
-        case NthSelector2(p) => bh.consume(p)
-        case NthSelector3(p) => bh.consume(p)
-        case NthSelector4(p) => bh.consume(p)
-        case NthSelector5(p) => bh.consume(p)
-        case NthSelector6(p) => bh.consume(p)
-        case NthSelector7(p) => bh.consume(p)
-        case NthSelector8(p) => bh.consume(p)
-        case NthSelector9(p) => bh.consume(p)
-        case NthSelector10(p) => bh.consume(p)
-        case NthSelector11(p) => bh.consume(p)
-        case NthSelector12(p) => bh.consume(p)
-        case NthSelector13(p) => bh.consume(p)
-        case NthSelector14(p) => bh.consume(p)
-        case NthSelector15(p) => bh.consume(p)
-        case NthSelector16(p) => bh.consume(p)
-        case NthSelector17(p) => bh.consume(p)
-        case NthSelector18(p) => bh.consume(p)
-        case NthSelector19(p) => bh.consume(p)
-        case NthSelector20(p) => bh.consume(p)
-        case NthSelector21(p) => bh.consume(p)
-        case NthSelector22(p) => bh.consume(p)
-        case NthSelector23(p) => bh.consume(p)
-        case NthSelector24(p) => bh.consume(p)
-        case NthSelector25(p) => bh.consume(p)
-        case NthSelector26(p) => bh.consume(p)
-        case NthSelector27(p) => bh.consume(p)
-        case NthSelector28(p) => bh.consume(p)
-        case NthSelector29(p) => bh.consume(p)
-        case NthSelector30(p) => bh.consume(p)
-        case NthSelector31(p) => bh.consume(p)
-        case NthSelector32(p) => bh.consume(p)
-        case NthSelector33(p) => bh.consume(p)
-        case NthSelector34(p) => bh.consume(p)
-        case NthSelector35(p) => bh.consume(p)
-        case NthSelector36(p) => bh.consume(p)
-        case NthSelector37(p) => bh.consume(p)
-        case NthSelector38(p) => bh.consume(p)
-        case NthSelector39(p) => bh.consume(p)
-        case NthSelector40(p) => bh.consume(p)
+        case NthSelectorPlain1(p) => bh.consume(p)
+        case NthSelectorPlain2(p) => bh.consume(p)
+        case NthSelectorPlain3(p) => bh.consume(p)
+        case NthSelectorPlain4(p) => bh.consume(p)
+        case NthSelectorPlain5(p) => bh.consume(p)
+        case NthSelectorPlain6(p) => bh.consume(p)
+        case NthSelectorPlain7(p) => bh.consume(p)
+        case NthSelectorPlain8(p) => bh.consume(p)
+        case NthSelectorPlain9(p) => bh.consume(p)
+        case NthSelectorPlain10(p) => bh.consume(p)
+        case NthSelectorPlain11(p) => bh.consume(p)
+        case NthSelectorPlain12(p) => bh.consume(p)
+        case NthSelectorPlain13(p) => bh.consume(p)
+        case NthSelectorPlain14(p) => bh.consume(p)
+        case NthSelectorPlain15(p) => bh.consume(p)
+        case NthSelectorPlain16(p) => bh.consume(p)
+        case NthSelectorPlain17(p) => bh.consume(p)
+        case NthSelectorPlain18(p) => bh.consume(p)
+        case NthSelectorPlain19(p) => bh.consume(p)
+        case NthSelectorPlain20(p) => bh.consume(p)
+        case NthSelectorPlain21(p) => bh.consume(p)
+        case NthSelectorPlain22(p) => bh.consume(p)
+        case NthSelectorPlain23(p) => bh.consume(p)
+        case NthSelectorPlain24(p) => bh.consume(p)
+        case NthSelectorPlain25(p) => bh.consume(p)
+        case NthSelectorPlain26(p) => bh.consume(p)
+        case NthSelectorPlain27(p) => bh.consume(p)
+        case NthSelectorPlain28(p) => bh.consume(p)
+        case NthSelectorPlain29(p) => bh.consume(p)
+        case NthSelectorPlain30(p) => bh.consume(p)
+        case NthSelectorPlain31(p) => bh.consume(p)
+        case NthSelectorPlain32(p) => bh.consume(p)
+        case NthSelectorPlain33(p) => bh.consume(p)
+        case NthSelectorPlain34(p) => bh.consume(p)
+        case NthSelectorPlain35(p) => bh.consume(p)
+        case NthSelectorPlain36(p) => bh.consume(p)
+        case NthSelectorPlain37(p) => bh.consume(p)
+        case NthSelectorPlain38(p) => bh.consume(p)
+        case NthSelectorPlain39(p) => bh.consume(p)
+        case NthSelectorPlain40(p) => bh.consume(p)
+        case _ => ???
       }
     }
 
